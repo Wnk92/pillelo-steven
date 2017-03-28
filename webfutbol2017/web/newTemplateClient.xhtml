@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   
+    <head>
+        <link href="resources/css/listaTorneo.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+
+                <div id="content">
+                    <table cellspacing="0">
+                        <tr>
+                            <th>Task Details</th>
+                            <th>Progress</th>
+                            <th>Vital Task</th>
+                        </tr>
+                        <tr>
+                            <td>Look at Orman's <a href="http://www.premiumpixels.com/simple-little-table-psd/">simple table design</a></td>
+                            <td>100%</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Turn table design into a web project</td>
+                            <td>100%</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Drink another cup of coffee</td>
+                            <td>50%</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Take a stretch break</td>
+                            <td>0%</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Post this stuff on the interweb</td>
+                            <td>100%</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <h:dataTable value="#{torneoManagedBean.listarTorneo()}" var="item">
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="NombreTorneo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreTorneo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Organizador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.organizador}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DatosContactoOrganizador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.datosContactoOrganizador}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaInicio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaInicio}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaFin"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFin}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
