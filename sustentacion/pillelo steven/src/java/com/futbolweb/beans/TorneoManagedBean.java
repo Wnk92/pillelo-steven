@@ -52,10 +52,12 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
     
     public void create() {
         try {
-            
-            tf.create(torneo);
+            if (torneo.getFechaInicio().before(torneo.getFechaFin())) {
+                tf.create(torneo);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Torneo registrado con éxito"));
-            
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "La fecha final debe ser posterior a la fecha inicial"));
+            }
         } catch (Exception e) {
             
         }
